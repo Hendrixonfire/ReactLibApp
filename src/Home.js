@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import './App.css';
 import Book from './book'
-
+import MyCounter from './counterComp';
 import {Link} from 'react-router-dom';
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Home() {
+
     const [books, setBooks] = useState([
       {name: 'Game of thrones',
        author: 'J.R.R. Martin',
@@ -100,17 +102,21 @@ function Home() {
      setValue(e.target.value);
      
      }
-    
+
+     const counter  = useSelector(state =>{
+      return state.counter
+     })
     
       return (
       
         <div>
           <h1>Book Library App React</h1>
+          <MyCounter/>
           <div className="searchContainer">
           <label className='labelClass'>
           Find a book by name: <input className="userSearchInput" placeholder="Enter a book name" type="text" onChange={getData} />
           </label>
-          
+      
           </div>
         
         <div className="searchDropContainer">
@@ -130,17 +136,25 @@ function Home() {
     
           <div className="App">
         
-             {
-              books.filter(book=>{ 
-               if (userInputData === '' && value ==='') {return book
-              } else if (value && userInputData === '') {return book.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())}
-              else {return book.name.toLocaleLowerCase().includes(userInputData)}
-              
-             }).map(book =>(
-              <Link to={`bookdescription/${book.id}`} style={{ linkstyle: 'none', color: 'wheat'}}>
-              <Book  name={book.name} author={book.author} pages={book.pages} image={book.image}/>
-              </Link>
-            ))}
+             { (counter > 0) ? 
+                 books.filter(book=>{ 
+                  if (userInputData === '' && value ==='') {return book
+                 } else if (value && userInputData === '') {return book.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())}
+                 else {return book.name.toLocaleLowerCase().includes(userInputData)}
+                 
+                }).slice(0, counter).map(book =>(
+                 (
+                    <Link to={`bookdescription/${book.id}`} style={{ linkstyle: 'none', color: 'wheat'}}>
+                    <Book  name={book.name} author={book.author} pages={book.pages} image={book.image}/>
+                    </Link>   
+                 )
+                  
+                   
+                  
+               
+               ))
+              : '' }
+           
            </div>
            
         </div>
