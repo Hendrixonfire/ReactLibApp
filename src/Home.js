@@ -122,7 +122,7 @@ function Home() {
     }
    
       return (
- <div className='homePageContainer' style={{backgroundImage:theme==="GOT_THEME" ? `url(${GOT_THEME})`: ``}}>
+ <div className='homePageContainer' style={{backgroundImage:theme==="GOT_THEME" ? `url(${GOT_THEME})`: 'none'}}>
         <div>
           <div className='themeContainer'>
           <svg className="gotTheme" onClick={()=>changeTheme()} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 80 80">
