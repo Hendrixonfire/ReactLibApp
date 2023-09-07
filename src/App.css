@@ -84,6 +84,25 @@ h2{
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.gotTheme{
+margin: 10px;
+margin-left: 10px;
+cursor: pointer;
+}
+.themeContainer{
+  display: flex;
+  flex-direction:column;
+}
+.themeText{
+  margin-left: 10px;
+}
+.homePageContainer{
+
+  height: 130vh;
+  background-repeat: round;
+ 
+
+}
 .button{
 cursor: pointer;
 width: 120px;
