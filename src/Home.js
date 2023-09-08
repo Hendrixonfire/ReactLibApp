@@ -154,7 +154,7 @@ function Home() {
          : `You selected ${value}`}</p>
         </div>
     
-          <div className="App">
+          <div className="App" >
         
              { (counter > 0) ? 
                  books.filter(book=>{ 
@@ -165,7 +165,7 @@ function Home() {
                 }).slice(0, counter).map(book =>(
                  (
                     <Link to={`bookdescription/${book.id}`} style={{ linkstyle: 'none', color: 'wheat'}}>
-                    <Book  name={book.name} author={book.author} pages={book.pages} image={book.image}/>
+                    <Book  name={book.name} author={book.author} pages={book.pages} image={book.image} />
                     </Link>   
                  )
                   
